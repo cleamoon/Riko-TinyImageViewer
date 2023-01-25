@@ -45,20 +45,26 @@
     imageStyle.set(defaultImageStyle + `transform: scale(${scale});`);
   });
 
-  const assetUrl = writable("");
+  const filePath = writable("");
+  const folderPath = writable("");
 
   const openFile = async () => {
     console.log("Opening file...");
-    assetUrl.set(
+    filePath.set(
       await open({
         multiple: false,
         filters: [
           {
-            name: "Images",
+            name: "Image",
             extensions: ["jpg", "png", "gif"],
           },
         ],
       })
+        .then((fildPath) => (Array.isArray(fildPath) ? fildPath[0] : fildPath))
+        .then((filePath) => {
+          folderPath.set(filePath.split("/").slice(0, -1).join("/"));
+          return filePath;
+        })
         .then(convertFileSrc)
         .catch((err) => {
           console.error(err);
@@ -69,11 +75,11 @@
 </script>
 
 <main class="container">
-  {#if $assetUrl === ""}
+  {#if $filePath === ""}
     <button on:click={openFile}>Open File</button>
   {/if}
-  {#if $assetUrl !== ""}
-    <img src={$assetUrl} alt={$assetUrl} style={$imageStyle} />
+  {#if $filePath !== ""}
+    <img src={$filePath} alt={$filePath} style={$imageStyle} />
   {/if}
 </main>
 
@@ -85,6 +91,7 @@
 
   main {
     margin: 0;
+    padding: 0;
     height: 100vh;
     width: 100vw;
     display: block;
