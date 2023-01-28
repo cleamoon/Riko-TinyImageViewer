@@ -151,6 +151,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@svelte-put/shortcut@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@svelte-put/shortcut/-/shortcut-1.1.0.tgz#279d603b36b05404b1791a284a2a51b5bc6abfae"
+  integrity sha512-ni54DrwIpjy8uW014awuQpuBs4yvPFOT8nPX/ZziFcuwKdRCszHGQzp3m9w7M6e95IUVToFg/QJrOkQaaKq/6g==
+
 "@sveltejs/vite-plugin-svelte@^2.0.0":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-2.0.2.tgz#943090239a31b2e0546837ff7649b73aeb46614c"
