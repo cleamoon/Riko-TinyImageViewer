@@ -24,6 +24,11 @@
     "src/**/*.tsx",
     "src/**/*.jsx"
   ],
+  "exclude": [
+    "node_modules/*",
+    "__sapper__/*",
+    "public/*",
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"
