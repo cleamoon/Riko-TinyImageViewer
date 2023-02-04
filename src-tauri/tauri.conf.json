@@ -44,7 +44,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.yue.riko",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
