@@ -9,15 +9,18 @@ export const folderSize = derived(
   ($filesInCurrentFolder) => $filesInCurrentFolder.length
 );
 export const file = derived([fileIndex, filesInCurrentFolder], ($value) => {
-  const [fileIndex, filesInCurrentFolder] = $value;
+  const [fileIndexValue, filesInCurrentFolder] = $value;
   if (filesInCurrentFolder.length === 0) {
     return "";
   }
-  return filesInCurrentFolder[fileIndex];
+  if (fileIndexValue >= filesInCurrentFolder.length) {
+    fileIndex.set(0);
+  }
+  return filesInCurrentFolder[fileIndexValue];
 });
 
 export const fileUrl = derived(file, ($file) => 
-  convertFileSrc($file.path)
+  convertFileSrc($file?.path)
 );
 
 
