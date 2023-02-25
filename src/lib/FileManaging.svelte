@@ -50,7 +50,6 @@
   };
 
   export const changeFolder = (direction) => {
-    console.log(get(parentFolder));
     readDir(get(parentFolder), { dir: BaseDirectory.AppData, recursive: false }).then((entries) => {
       const folders = dirList(entries, (file) => file.children);
       const currentFolderIndex = folders.findIndex((f) => f.path === get(folderPath));
