@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   import { filesInCurrentFolder, fileUrl, imageStyle } from "./lib/stores.js";
   import { openFile } from "./lib/FileManaging.svelte";
-  import { handleKeydown } from "./lib/Shortcuts.svelte";
+  import { handleKeydown, nextFile } from "./lib/Shortcuts.svelte";
 </script>
 
 <main>
@@ -13,7 +13,7 @@
   {/if}
 </main>
 
-<svelte:window on:keydown={(event) => handleKeydown(event)} />
+<svelte:window on:keydown={(event) => handleKeydown(event)} on:click={nextFile} />
 
 <style>
   main {

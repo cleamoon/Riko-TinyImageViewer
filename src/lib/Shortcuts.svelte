@@ -6,7 +6,7 @@
   import { get } from "svelte/store";
   import { changeFolder } from "./FileManaging.svelte";
 
-  const nextFile = () => {
+  export const nextFile = () => {
     if (get(fileIndex) + 1 >= get(folderSize)) {
       changeFolder(1);
     } else {
