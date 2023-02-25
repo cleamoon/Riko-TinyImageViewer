@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   import { openFile } from "./FileManaging.svelte";
   import { exit } from "@tauri-apps/api/process";
+  import { appWindow } from "@tauri-apps/api/window";
   import { fileIndex, folderSize, imageStyle, scale, defaultImageStyle } from "./stores.js";
   import { get } from "svelte/store";
   import { changeFolder } from "./FileManaging.svelte";
@@ -39,6 +40,10 @@
     imageStyle.set(defaultImageStyle + `transform: scale(${scale});`);
   };
 
+  const toggleFullScreen = () => {
+    appWindow.setFullscreen(!appWindow.isFullscreen());
+  };
+
   export const handleKeydown = (event) => {
     switch (event.key) {
       case "ArrowLeft":
@@ -57,6 +62,9 @@
         break;
       case "End":
         lastFile();
+        break;
+      case "f":
+        toggleFullScreen();
         break;
       case "b":
         if (event.ctrlKey) {
