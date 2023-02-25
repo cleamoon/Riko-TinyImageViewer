@@ -32,10 +32,7 @@
       ],
     })
       .then((file) => (Array.isArray(file) ? file[0] : file))
-      .then((file) => {
-        const folderPath = file.split("/").slice(0, -1).join("/");
-        return { file, folderPath };
-      })
+      .then((file) => ({ file, folderPath: file.split("/").slice(0, -1).join("/") }))
       .then(({ file, folderPath }) => {
         readDir(folderPath, { dir: BaseDirectory.AppData, recursive: false }).then((entries) => {
           filesInCurrentFolder.set(dirList(entries, (file) => !file.children && isFileImage(file)));
