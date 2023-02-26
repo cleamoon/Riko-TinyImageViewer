@@ -58,7 +58,11 @@
             filesInCurrentFolder.set(
               dirList(entriesInSubFolder, (file) => !file.children && isFileImage(file))
             );
-            fileIndex.set(0);
+            if (direction > 0) {
+              fileIndex.set(0);
+            } else {
+              fileIndex.set(get(filesInCurrentFolder).length - 1);
+            }
           }
         );
       }
