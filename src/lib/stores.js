@@ -24,14 +24,13 @@ export const fileUrl = derived(file, ($file) =>
 );
 
 
-export const parentFolder = derived(file, ($file) => {
-  console.log($file.path.split("/").slice(0, -2).join("/"));
-  return $file.path.split("/").slice(0, -2).join("/");
-});
+export const parentFolder = derived(file, ($file) =>
+  $file?.path.split("/").slice(0, -2).join("/")
+);
 
-export const folderPath = derived(file, ($file) => {
-  return $file.path.split("/").slice(0, -1).join("/");
-});
+export const folderPath = derived(file, ($file) =>
+  $file?.path.split("/").slice(0, -1).join("/")
+);
 
 export const scale = writable(1.0);
 
