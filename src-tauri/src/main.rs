@@ -3,16 +3,16 @@
     windows_subsystem = "windows"
 )]
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+use std::env;
+
 #[tauri::command]
-fn greet(name: &str) -> String {
-    println!("Hello, {}! You've been greeted from Rust!", name);
-    return format!("Hello, {}! You've been greeted from Rust!", name);
+fn get_args() -> Vec<String> {
+    env::args().collect()
 }
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![get_args])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

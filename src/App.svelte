@@ -2,6 +2,10 @@
   import { filesInCurrentFolder, fileUrl, imageStyle } from "./lib/stores.js";
   import { openFile } from "./lib/FileManaging.svelte";
   import { handleKeydown, nextFile } from "./lib/Shortcuts.svelte";
+  import { invoke } from "@tauri-apps/api/tauri";
+
+  const args = invoke("get_args");
+  console.log(args);
 </script>
 
 <main>
