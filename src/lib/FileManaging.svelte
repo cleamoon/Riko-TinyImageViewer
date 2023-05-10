@@ -46,6 +46,14 @@
       });
   };
 
+  export const openFileByPath = (file) => {
+    const folderPath = file.split("/").slice(0, -1).join("/");
+    readDir(folderPath, { dir: BaseDirectory.AppData, recursive: false }).then((entries) => {
+      filesInCurrentFolder.set(dirList(entries, (file) => !file.children && isFileImage(file)));
+      fileIndex.set(get(filesInCurrentFolder).findIndex((f) => f.path === file));
+    });
+  };
+
   export const changeFolder = (direction) => {
     readDir(get(parentFolder), { dir: BaseDirectory.AppData, recursive: false }).then((entries) => {
       const folders = dirList(entries, (file) => file.children);

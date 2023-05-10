@@ -1,11 +1,14 @@
 <script lang="ts" context="module">
   import { filesInCurrentFolder, fileUrl, imageStyle } from "./lib/stores.js";
-  import { openFile } from "./lib/FileManaging.svelte";
+  import { openFile, openFileByPath } from "./lib/FileManaging.svelte";
   import { handleKeydown, nextFile } from "./lib/Shortcuts.svelte";
   import { invoke } from "@tauri-apps/api/tauri";
 
-  const args = invoke("get_args");
-  console.log(args);
+  invoke("get_args").then((args: string[]) => {
+    if (args?.length > 1) {
+      openFileByPath(args[1]);
+    }
+  });
 </script>
 
 <main>
