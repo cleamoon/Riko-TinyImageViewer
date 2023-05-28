@@ -1,5 +1,5 @@
 import { convertFileSrc } from "@tauri-apps/api/tauri";
-import { derived, writable, get } from "svelte/store";
+import { derived, writable } from "svelte/store";
 
 export const fileIndex = writable(0);
 export const filesInCurrentFolder = writable([]);
