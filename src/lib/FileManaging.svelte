@@ -1,8 +1,9 @@
 <script lang="ts" context="module">
-  import { open } from "@tauri-apps/api/dialog";
+  import { open, confirm } from "@tauri-apps/api/dialog";
   import { get } from "svelte/store";
-  import { readDir, BaseDirectory, type FileEntry } from "@tauri-apps/api/fs";
-  import { fileIndex, filesInCurrentFolder, parentFolder, folderPath } from "./stores.js";
+  import { readDir, BaseDirectory, removeFile, type FileEntry } from "@tauri-apps/api/fs";
+  import { fileIndex, filesInCurrentFolder, parentFolder, folderPath, file } from "./stores.js";
+  import { nextFile } from "./Shortcuts.svelte";
 
   const isFileImage = (file) => /.(jpg|png|gif|jpeg)$/.test(file.name);
 
@@ -59,20 +60,33 @@
       const folders = dirList(entries, (file) => file.children);
       const currentFolderIndex = folders.findIndex((f) => f.path === get(folderPath));
       const nextFolderIndex = currentFolderIndex + direction;
-      if (nextFolderIndex >= 0 && nextFolderIndex < folders.length) {
-        const nextFolder = folders[nextFolderIndex];
-        readDir(nextFolder.path, { dir: BaseDirectory.AppData, recursive: false }).then(
-          (entriesInSubFolder) => {
-            filesInCurrentFolder.set(
-              dirList(entriesInSubFolder, (file) => !file.children && isFileImage(file))
-            );
-            if (direction > 0) {
-              fileIndex.set(0);
-            } else {
-              fileIndex.set(get(filesInCurrentFolder).length - 1);
-            }
+
+      if (nextFolderIndex < 0 || nextFolderIndex >= folders.length) return;
+
+      const nextFolder = folders[nextFolderIndex];
+      readDir(nextFolder.path, { dir: BaseDirectory.AppData, recursive: false }).then(
+        (entriesInSubFolder) => {
+          filesInCurrentFolder.set(
+            dirList(entriesInSubFolder, (file) => !file.children && isFileImage(file))
+          );
+          if (direction > 0) {
+            fileIndex.set(0);
+          } else {
+            fileIndex.set(get(filesInCurrentFolder).length - 1);
           }
-        );
+        }
+      );
+    });
+  };
+
+  export const deleteFile = () => {
+    if (!get(file)) return;
+
+    confirm("Are you sure to delete this file?").then((res) => {
+      if (res) {
+        removeFile(get(file).path);
+        filesInCurrentFolder.update((files) => files.filter((f) => f.path !== get(file).path));
+        nextFile();
       }
     });
   };

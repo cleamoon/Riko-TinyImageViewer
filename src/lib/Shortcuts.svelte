@@ -4,7 +4,7 @@
   import { appWindow } from "@tauri-apps/api/window";
   import { fileIndex, folderSize, imageStyle, scale, defaultImageStyle } from "./stores.js";
   import { get } from "svelte/store";
-  import { changeFolder } from "./FileManaging.svelte";
+  import { changeFolder, deleteFile } from "./FileManaging.svelte";
 
   export const nextFile = () => {
     if (get(fileIndex) + 1 >= get(folderSize)) {
@@ -100,6 +100,14 @@
       case "-":
         if (event.ctrlKey) {
           zoomOut();
+        }
+        break;
+      case "Delete":
+        deleteFile();
+        break;
+      case "d":
+        if (event.ctrlKey) {
+          deleteFile();
         }
         break;
       default:
