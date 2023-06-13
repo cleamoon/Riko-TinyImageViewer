@@ -111,7 +111,7 @@ main {
   justify-content: center;
   display: flex;
   background-color: #eeeeee;
-  overflow: hidden;
+  overflow: scroll;
   user-select: none;
   -webkit-user-select: none;
   position: relative;
