@@ -61,7 +61,10 @@
       const currentFolderIndex = folders.findIndex((f) => f.path === get(folderPath));
       const nextFolderIndex = currentFolderIndex + direction;
 
-      if (nextFolderIndex < 0 || nextFolderIndex >= folders.length) return;
+      if (nextFolderIndex < 0 || nextFolderIndex >= folders.length) {
+        fileIndex.set(get(filesInCurrentFolder).length - 1);
+        return;
+      }
 
       const nextFolder = folders[nextFolderIndex];
       readDir(nextFolder.path, { dir: BaseDirectory.AppData, recursive: false }).then(
