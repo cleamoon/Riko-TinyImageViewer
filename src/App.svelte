@@ -50,8 +50,8 @@
     bottom: 0;
     left: auto;
     right: 0;
-    font-size: 2;
+    font-size: 0.6rem;
     color: rgba(50, 255, 50, 1);
-    background-color: rgba(10, 10, 10, 0.2);
+    background-color: rgba(10, 10, 10, 0.6);
   }
 </style>
