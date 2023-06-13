@@ -14,7 +14,7 @@
 
 <main>
   {#if $filesInCurrentFolder.length === 0}
-    <div>
+    <div class="start">
       <button on:click={openFile}>Open File</button>
       <Help />
     </div>
