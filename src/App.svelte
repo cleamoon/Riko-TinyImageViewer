@@ -16,10 +16,10 @@
     <button on:click={openFile}>Open File</button>
   {/if}
   {#if $filesInCurrentFolder.length > 0}
-    <img src={$fileUrl} alt={$fileUrl} style={$imageStyle} />
-  {/if}
-  {#if $filesInCurrentFolder.length > 0}
-    <div class="info">{$file?.path}</div>
+    <div>
+      <img src={$fileUrl} alt={$fileUrl} style={$imageStyle} />
+      <div class="info">{$file?.path}</div>
+    </div>
   {/if}
 </main>
 
