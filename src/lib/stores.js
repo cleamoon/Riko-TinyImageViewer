@@ -37,3 +37,5 @@ export const scale = writable(1.0);
 export const defaultImageStyle = "width: 100%; height: 100%; object-fit: contain;";
 
 export const imageStyle = writable(defaultImageStyle);
+
+export const showFilePath = writable(true);

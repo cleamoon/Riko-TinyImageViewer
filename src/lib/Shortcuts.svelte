@@ -2,7 +2,14 @@
   import { openFile } from "./FileManaging.svelte";
   import { exit } from "@tauri-apps/api/process";
   import { appWindow } from "@tauri-apps/api/window";
-  import { fileIndex, folderSize, imageStyle, scale, defaultImageStyle } from "./stores.js";
+  import {
+    fileIndex,
+    folderSize,
+    imageStyle,
+    scale,
+    defaultImageStyle,
+    showFilePath,
+  } from "./stores.js";
   import { get } from "svelte/store";
   import { changeFolder, deleteFile } from "./FileManaging.svelte";
 
@@ -42,6 +49,10 @@
 
   const toggleFullScreen = () => {
     appWindow.setFullscreen(!appWindow.isFullscreen());
+  };
+
+  const toggleShowFilePath = () => {
+    showFilePath.update((b) => !b);
   };
 
   export const handleKeydown = (event) => {
@@ -108,6 +119,11 @@
       case "d":
         if (event.ctrlKey) {
           deleteFile();
+        }
+        break;
+      case "p":
+        if (event.ctrlKey) {
+          toggleShowFilePath();
         }
         break;
       default:

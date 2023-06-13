@@ -7,5 +7,6 @@
     <p>Ctrl+b to reset zoom</p>
     <p>Ctrl+d to delete file</p>
     <p>Ctrl+q to quit</p>
+    <p>Ctrl+p to toggle show file path</p>
   </div>
 </main>
