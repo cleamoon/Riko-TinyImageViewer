@@ -29,7 +29,7 @@
   {#if $filesInCurrentFolder.length > 0}
     <div class="image" style={$zoomStyle}>
       <img src={$fileUrl} alt={$fileUrl} style={$imageStyle} />
-      {#if $showFilePath && $filesInCurrentFolder.length > 0}
+      {#if $showFilePath}
         <div class="info">{$file?.path}</div>
       {/if}
     </div>
