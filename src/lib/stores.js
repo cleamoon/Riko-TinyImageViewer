@@ -40,4 +40,4 @@ export const imageStyle = writable(defaultImageStyle);
 
 export const showFilePath = writable(true);
 
-export const zoomStyle = derived(scale, ($scale) => `width: ${$scale * 100}%; height: ${$scale * 100}%; object-fit: contain;`);
+export const zoomStyle = derived(scale, ($scale) => `width: ${$scale * 100}%; height: ${$scale * 100}%; object-fit: contain; top: 0; left: 0; position: absolute;`);
