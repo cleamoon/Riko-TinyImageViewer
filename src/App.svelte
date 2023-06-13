@@ -20,7 +20,9 @@
     </div>
   {/if}
   {#if $filesInCurrentFolder.length > 0}
-    <img src={$fileUrl} alt={$fileUrl} style={$imageStyle} />
+    <div class="image">
+      <img src={$fileUrl} alt={$fileUrl} style={$imageStyle} />
+    </div>
   {/if}
   {#if $showFilePath && $filesInCurrentFolder.length > 0}
     <div class="info">{$file?.path}</div>

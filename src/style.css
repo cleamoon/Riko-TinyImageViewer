@@ -101,7 +101,6 @@ button {
   }
 }
 
-
 main {
   margin: 0;
   padding: 0;
@@ -150,4 +149,10 @@ div.start {
   width: 100%;
   align-items: center;
   justify-content: center;
+}
+
+div.image {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
 }
