@@ -1,5 +1,12 @@
 <script lang="ts" context="module">
-  import { filesInCurrentFolder, fileUrl, file, imageStyle, showFilePath } from "./lib/stores.js";
+  import {
+    filesInCurrentFolder,
+    fileUrl,
+    file,
+    imageStyle,
+    zoomStyle,
+    showFilePath,
+  } from "./lib/stores.js";
   import { openFile, openFileByPath } from "./lib/FileManaging.svelte";
   import { handleKeydown, nextFile } from "./lib/Shortcuts.svelte";
   import { invoke } from "@tauri-apps/api/tauri";
@@ -20,7 +27,7 @@
     </div>
   {/if}
   {#if $filesInCurrentFolder.length > 0}
-    <div class="image">
+    <div class="image" style={$zoomStyle}>
       <img src={$fileUrl} alt={$fileUrl} style={$imageStyle} />
     </div>
   {/if}

@@ -38,13 +38,17 @@
   };
 
   const zoomIn = () => {
+    if (get(scale) > 2) {
+      return;
+    }
     scale.update((n) => n * 1.1);
-    imageStyle.update((style) => style + `transform: scale(${scale});`);
   };
 
   const zoomOut = () => {
+    if (get(scale) < 0.5) {
+      return;
+    }
     scale.update((n) => n / 1.1);
-    imageStyle.set(defaultImageStyle + `transform: scale(${scale});`);
   };
 
   const toggleFullScreen = () => {
