@@ -28,34 +28,3 @@
 </main>
 
 <svelte:window on:keydown={(event) => handleKeydown(event)} on:click={nextFile} />
-
-<style>
-  main {
-    margin: 0;
-    padding: 0;
-    height: 99vh;
-    width: 99vw;
-    align-items: center;
-    justify-content: center;
-    display: block;
-    background-color: #eeeeee;
-    overflow: hidden;
-    user-select: none;
-    -webkit-user-select: none;
-    position: relative;
-    overscroll-behavior-y: none;
-    overscroll-behavior-x: none;
-    cursor: grab;
-  }
-
-  div.info {
-    position: absolute;
-    top: auto;
-    bottom: 0;
-    left: auto;
-    right: 0;
-    font-size: 0.6rem;
-    color: rgba(50, 255, 50, 1);
-    background-color: rgba(10, 10, 10, 0.6);
-  }
-</style>

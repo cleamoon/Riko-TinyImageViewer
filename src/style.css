@@ -99,3 +99,45 @@ button {
     background-color: #0f0f0f98;
   }
 }
+
+
+main {
+  margin: 0;
+  padding: 0;
+  height: 99vh;
+  width: 99vw;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  background-color: #eeeeee;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  cursor: grab;
+}
+
+div.info {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  font-size: 0.6rem;
+  color: rgba(50, 255, 50, 1);
+  background-color: rgba(10, 10, 10, 0.6);
+}
+
+div.help {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.5rem;
+  color: rgba(0, 0, 0, 0.6);
+}
