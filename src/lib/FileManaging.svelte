@@ -61,7 +61,10 @@
       const currentFolderIndex = folders.findIndex((f) => f.path === get(folderPath));
       const nextFolderIndex = currentFolderIndex + direction;
 
-      if (nextFolderIndex < 0 || nextFolderIndex >= folders.length) {
+      if (nextFolderIndex < 0) {
+        fileIndex.set(0);
+        return;
+      } else if (nextFolderIndex >= folders.length) {
         fileIndex.set(get(filesInCurrentFolder).length - 1);
         return;
       }
