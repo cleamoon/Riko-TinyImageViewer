@@ -42,8 +42,6 @@
       })
       .catch((err) => {
         console.error(err);
-        filesInCurrentFolder.set([]);
-        fileIndex.set(0);
       });
   };
 
