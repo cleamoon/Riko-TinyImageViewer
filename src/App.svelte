@@ -9,14 +9,12 @@
   } from "./lib/stores.js";
   import { openFile, openFileByPath } from "./lib/FileManaging.svelte";
   import { handleKeydown, nextFile } from "./lib/Shortcuts.svelte";
+  import { invoke } from "@tauri-apps/api/tauri";
   import Help from "./Help.svelte";
-  import { onMount } from "svelte";
-  import { promisified } from "@tauri-apps/api/tauri";
 
-  onMount(async () => {
-    const args = await promisified({ cmd: "cliArgs" });
-    if (args.length > 1) {
-      openFileByPath(args[0]);
+  invoke("get_args").then((args: string[]) => {
+    if (args?.length > 1) {
+      openFileByPath(args[1]);
     }
   });
 </script>
