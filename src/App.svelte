@@ -9,7 +9,6 @@
   } from "./lib/stores.js";
   import { openFile, openFileByPath } from "./lib/FileManaging.svelte";
   import { handleKeydown, nextFile } from "./lib/Shortcuts.svelte";
-  import { invoke } from "@tauri-apps/api/tauri";
   import Help from "./Help.svelte";
   import { onMount } from "svelte";
   import { promisified } from "@tauri-apps/api/tauri";
