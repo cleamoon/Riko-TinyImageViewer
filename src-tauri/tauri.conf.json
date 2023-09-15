@@ -62,25 +62,6 @@
         "timestampUrl": ""
       }
     },
-    "custom": {
-      "fileAssociations": [
-        {
-          "ext": "jpg",
-          "name": "JPEG image",
-          "role": "Editor"
-        },
-        {
-          "ext": "png",
-          "name": "PNG image",
-          "role": "Editor"
-        },
-        {
-          "ext": "gif",
-          "name": "GIF image",
-          "role": "Editor"
-        }
-      ]
-    },
     "security": {
       "csp": null
     },
