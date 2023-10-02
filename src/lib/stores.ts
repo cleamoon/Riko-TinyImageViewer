@@ -1,8 +1,9 @@
 import { convertFileSrc } from "@tauri-apps/api/tauri";
+import { type FileEntry } from "@tauri-apps/api/fs";
 import { derived, writable } from "svelte/store";
 
 export const fileIndex = writable(0);
-export const filesInCurrentFolder = writable([]);
+export const filesInCurrentFolder = writable<FileEntry[]>([]);
 
 export const folderSize = derived(
   filesInCurrentFolder,
@@ -19,7 +20,7 @@ export const file = derived([fileIndex, filesInCurrentFolder], ($value) => {
   return filesInCurrentFolder[fileIndexValue];
 });
 
-export const fileUrl = derived(file, ($file) => 
+export const fileUrl = derived(file, ($file) =>
   convertFileSrc($file?.path)
 );
 
