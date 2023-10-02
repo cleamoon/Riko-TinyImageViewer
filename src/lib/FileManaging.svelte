@@ -5,15 +5,15 @@
   import { fileIndex, filesInCurrentFolder, parentFolder, folderPath, file } from "./stores.js";
   import { nextFile } from "./Shortcuts.svelte";
 
-  const isFileImage = (file) => /.(jpg|png|gif|jpeg)$/.test(file.name);
+  const isFileImage = (file: FileEntry) => /.(jpg|png|gif|jpeg)$/.test(file.name || "");
 
-  const dirList = (entries: FileEntry[], condition: (FileEntry) => boolean) =>
+  const dirList = (entries: FileEntry[], condition: (_: FileEntry) => boolean) =>
     entries
       .map((entry) => {
         return { name: entry.name, path: entry.path, children: entry.children };
       })
       .filter(condition)
-      .sort((a, b) => {
+      .sort((a: FileEntry, b: FileEntry) => {
         const numberInA = a.name.match(/\d+/g);
         const numberInB = b.name.match(/\d+/g);
         if (numberInA && numberInB) {
