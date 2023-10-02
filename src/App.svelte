@@ -12,10 +12,8 @@
   import { invoke } from "@tauri-apps/api/tauri";
   import Help from "./Help.svelte";
 
-  invoke("get_args").then((args: string[]) => {
-    if (args?.length > 1) {
-      openFileByPath(args[1]);
-    }
+  invoke("get_full_path").then((path) => {
+    console.log(path);
   });
 </script>
 
